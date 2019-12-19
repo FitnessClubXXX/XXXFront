@@ -1,0 +1,30 @@
+.navigationWrapper {
+  height: 6rem;
+  border-bottom: 2px solid black;
+  background-color: #d8d8d8;
+}
+
+.titleElement {
+  transform: translateY(35%);
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.navElement {
+  transform: translateY(40%);
+}
+
+.navOption {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.searchElement {
+  transform: translateY(35%);
+}
+
+.searchIcon {
+  font-size: 2rem !important;
+}

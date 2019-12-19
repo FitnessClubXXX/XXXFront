@@ -1,0 +1,12 @@
+.featureWrapper {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+}
+
+.descriptionWrapper {
+  margin-left: 3rem !important;
+}
+
+.descriptionParagraph {
+  font-size: 1.3rem;
+}
