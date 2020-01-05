@@ -1,0 +1,14 @@
+.personIcon {
+  font-size: 7rem !important;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  float: left;
+}
+
+.testimonialParagraph {
+  line-height: 1.65rem; 
+  margin-top: 2rem;
+  width: 25rem;
+  font-size: 1.3rem;
+  float: left;
+}
