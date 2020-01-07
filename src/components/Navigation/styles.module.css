@@ -19,6 +19,18 @@
 .navOption {
   margin-left: 2rem;
   margin-right: 2rem;
+  color: black;
+}
+
+.navOptionParagraph {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  display: inline;
+  text-decoration: underline;
+}
+
+.navOptionParagraph:hover {
+  cursor: pointer;
 }
 
 .searchElement {
