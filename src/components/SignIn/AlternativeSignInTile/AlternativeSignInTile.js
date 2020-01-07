@@ -8,7 +8,7 @@ const AlternativeSignInTile = props => {
     <Grid item xs={4}>
       <div className={styles.tileWrapper}>
         {props.icon}
-        <p style={{ display: "inline" }}>{props.title}</p>
+        <p className={styles.titleLine}>{props.title}</p>
       </div>
     </Grid>
   );

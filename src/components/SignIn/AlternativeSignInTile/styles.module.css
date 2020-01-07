@@ -4,3 +4,7 @@
   padding-bottom: 0.25rem;
   text-align: center;
 }
+
+.titleLine {
+  display: inline;
+}
