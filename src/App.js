@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import Landing from "./scenes/Landing/Landing";
+import Home from "./scenes/Home/Home";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer/Footer";
-import Landing from "./scenes/Landing/Landing";
 import SignIn from "./components/SignIn/SignIn";
 
 const App = () => {
@@ -18,6 +19,9 @@ const App = () => {
       <Navigation openSignIn={openSignIn} />
       <SignIn open={signInOpen} closeSignIn={closeSignIn} />
       <Switch>
+        <Route path="/home">
+          <Home />
+        </Route>
         <Route path="/">
           <Landing />
         </Route>

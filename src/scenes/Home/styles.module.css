@@ -1,0 +1,38 @@
+.imageWrapper {
+  position: relative;
+}
+
+.homePhoto {
+  max-width: 100%;
+}
+
+.capturePictureHeading {
+  position: absolute;
+  color: black;
+  top: 10%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+}
+
+.unassignedLinkParagraph {
+  position: absolute;
+  color: black;
+  top: 22.5%;
+  left: 23%;
+  transform: translate(-50%, -50%);
+  line-height: 2rem;
+}
+
+.featureMessageWrapper {
+  text-align: center;
+  background-color: #d8d8d8;
+  height: 5rem;
+  line-height: 5rem;
+  font-size: 1.4rem;
+}
+
+.tilesContainer {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

@@ -10,11 +10,19 @@ import {
   Accessible
 } from "@material-ui/icons";
 import { Grid } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 import styles from "./styles.module.css";
 import AlternativeSignInTile from "./AlternativeSignInTile/AlternativeSignInTile";
 
 const SignIn = props => {
+  const history = useHistory();
+
+  const _logIn = () => {
+    props.closeSignIn();
+    history.push("/home");
+  };
+
   return (
     <Dialog
       open={props.open}
@@ -66,7 +74,7 @@ const SignIn = props => {
       </Grid>
       <Grid container className={styles.signInRow}>
         <Grid item xs={12}>
-          <button>Sign In</button>
+          <button onClick={_logIn}>Sign In</button>
         </Grid>
       </Grid>
       <Grid container className={styles.orRow}>
