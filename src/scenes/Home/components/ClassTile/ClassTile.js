@@ -4,9 +4,14 @@ import { Grid } from "@material-ui/core";
 import styles from "./styles.module.css";
 
 const ClassTile = props => {
+  const _openClass = () => {
+    const { onClassOpen, id } = props;
+    onClassOpen(id);
+  };
+
   return (
     <Grid item xs={3}>
-      <div className={styles.tileWrapper}>
+      <div className={styles.tileWrapper} onClick={_openClass}>
         <div className={styles.imageWrapper}>
           <img
             src={props.image}
