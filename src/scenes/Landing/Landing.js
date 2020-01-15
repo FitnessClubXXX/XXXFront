@@ -14,6 +14,15 @@ import feature3 from '../../assets/photos/feature3.jpg'
 import styles from './styles.module.css'
 
 class Landing extends Component {
+
+  _redirectToAccount = () => {
+    this.props.history.push(`/account`);
+  };
+
+  _redirectToClasses = () => {
+    this.props.history.push(`/classes`);
+  };
+
   render() {
     return (
       <div className={styles.pageWrapper}>
@@ -25,17 +34,23 @@ class Landing extends Component {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit,
               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <button className={[styles.landingButton, styles.reservationBtn].join(' ')}>
-              Reservation
-            </button>
-            <button className={[styles.landingButton, styles.loginBtn].join(' ')}>
+            <button
+              className={[styles.landingButton, styles.loginBtn].join(' ')}
+              onClick={this.props.openSignIn}
+            >
               Login
             </button>
-            <button className={[styles.landingButton, styles.coachingBtn].join(' ')}>
-              Coaching
+            <button
+              className={[styles.landingButton, styles.accountBtn].join(' ')}
+              onClick={this._redirectToAccount}
+            >
+              Account
             </button>
-            <button className={[styles.landingButton, styles.pricingBtn].join(' ')}>
-              Pricing
+            <button
+              className={[styles.landingButton, styles.classesBtn].join(' ')}
+              onClick={this._redirectToClasses}
+            >
+              Classes
             </button>
           </Grid>
         </Grid>

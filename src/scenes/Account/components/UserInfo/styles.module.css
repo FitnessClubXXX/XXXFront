@@ -1,0 +1,11 @@
+.nameContainer {
+  margin-top: 2rem;
+  margin-bottom: -1rem;
+}
+
+.showCarnetsBtn {
+  border-radius: 0%;
+  font-size: 0.9rem;
+  width: 75%;
+  padding: 0.5rem;
+}
