@@ -8,14 +8,20 @@ import styles from "./styles.module.css";
 import ClassTile from "./components/ClassTile/ClassTile";
 
 class Home extends Component {
+  _redirectToClass = id => {
+    this.props.history.push(`/products/${id}`);
+  };
+
   _classTiles = () =>
     fitnessClasses.map(fitnessClass => {
       return (
         <ClassTile
           key={fitnessClass.id}
+          id={fitnessClass.id}
           name={fitnessClass.name}
           image={fitnessClass.photos[0]}
           price={fitnessClass.price}
+          onClassOpen={this._redirectToClass}
         />
       );
     });
