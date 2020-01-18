@@ -26,6 +26,10 @@
   width: 100% !important;
 }
 
+.credentialsInput {
+  width: 100%;
+}
+
 .passwordRow {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;

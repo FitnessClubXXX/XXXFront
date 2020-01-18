@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Dialog from "@material-ui/core/Dialog";
 import {
   Close,
@@ -14,13 +14,44 @@ import { useHistory } from "react-router-dom";
 
 import styles from "./styles.module.css";
 import AlternativeSignInTile from "./AlternativeSignInTile/AlternativeSignInTile";
+import { UserAPI } from "../../services/api";
 
 const SignIn = props => {
   const history = useHistory();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  const _logIn = () => {
-    props.closeSignIn();
-    history.push("/home");
+  const _handleEmailChange = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const _handlePasswordChange = (e) => {
+    setPassword(e.target.value)
+  }
+
+  const _logIn = async () => {
+    setLoading(true)
+    if (email === '') {
+      alert('E-mail address cannot be empty!')
+      return setLoading(false)
+    }
+    if (password === '') {
+      alert('Password cannot be empty!')
+      return setLoading(false)
+    }
+
+    // TODO: Uncomment when BE done
+    // const { data } = await UserAPI.login({ email, password })
+    setLoading(false)
+    // TODO: Uncomment when BE done
+    // if (data.userId) {
+    if (true) {
+      // sessionStorage.setItem('userId', data.userId)
+      props.closeSignIn();
+      return history.push("/home");
+    }
+    alert('Invalid email or passsword')
   };
 
   return (
@@ -46,7 +77,12 @@ const SignIn = props => {
         </Grid>
         <Grid item xs={1} />
         <Grid item xs={6}>
-          <input type="text" style={{ width: "100%" }} />
+          <input
+            type="text"
+            className={styles.credentialsInput}
+            value={email}
+            onChange={_handleEmailChange}
+          />
         </Grid>
       </Grid>
       <Grid container className={styles.passwordRow}>
@@ -55,7 +91,12 @@ const SignIn = props => {
         </Grid>
         <Grid item xs={1} />
         <Grid item xs={6}>
-          <input type="password" style={{ width: "100%" }} />
+          <input
+            type="password"
+            className={styles.credentialsInput}
+            value={password}
+            onChange={_handlePasswordChange}
+          />
         </Grid>
       </Grid>
       <Grid container className={styles.rememberMeRow}>
@@ -74,7 +115,12 @@ const SignIn = props => {
       </Grid>
       <Grid container className={styles.signInRow}>
         <Grid item xs={12}>
-          <button onClick={_logIn}>Sign In</button>
+          <button
+            onClick={_logIn}
+            disabled={loading}
+          >
+            Sign In
+          </button>
         </Grid>
       </Grid>
       <Grid container className={styles.orRow}>

@@ -15,13 +15,11 @@ class Navigation extends Component {
           xs={2}
           className={[styles.titleElement, styles.title].join(" ")}
         >
-          Fitness Club XXX
+          <Link to="/" className={styles.logoNavOption}>
+            Fitness Club XXX
+          </Link>
         </Grid>
         <Grid item xs={6} className={styles.navElement}>
-          <Link to="/" className={styles.navOption}>
-            Reservation
-          </Link>
-          {`|`}
           <p
             onClick={this.props.openSignIn}
             className={styles.navOptionParagraph}
@@ -29,12 +27,12 @@ class Navigation extends Component {
             Log in
           </p>
           {`|`}
-          <Link to="/" className={styles.navOption}>
-            Coaching
+          <Link to="/account" className={styles.navOption}>
+            Account
           </Link>
           {`|`}
-          <Link to="/" className={styles.navOption}>
-            Pricing
+          <Link to="/classes" className={styles.navOption}>
+            Classes
           </Link>
         </Grid>
         <Grid item xs={1} />

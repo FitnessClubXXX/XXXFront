@@ -55,20 +55,16 @@
   transform: translate(-50%, -40%);
 }
 
-.reservationBtn {
-  left: 20%;
-}
-
 .loginBtn {
-  left: 40%;
+  left: 25%;
 }
 
-.coachingBtn {
-  left: 60%;
+.accountBtn {
+  left: 47.5%;
 }
 
-.pricingBtn {
-  left: 80%;
+.classesBtn {
+  left: 70%;
 }
 
 .testimonialsWrapper {
