@@ -16,7 +16,7 @@
   },
   "scripts": {
     "lh-start": "react-scripts start",
-    "start": "react-scripts build && serve -s build",
+    "start": "serve -s build",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
