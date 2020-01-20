@@ -34,7 +34,7 @@ class Product extends Component {
 
     return (
       <Grid container className={styles.productContainer}>
-        <Grid item xs={6} className={styles.productGalleryWrapper}>
+        <Grid item xs={6} className={styles.productGalleryWrapper} id={"gallery"}>
           <ProductGallery images={fitnessClass.photos} />
         </Grid>
         <Grid item xs={1} />

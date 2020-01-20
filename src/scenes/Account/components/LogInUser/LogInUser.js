@@ -13,6 +13,7 @@ const LogInUser = (props) => {
         </Grid>
         <Grid item xs={2}>
           <input
+            id="emailInput"
             className={styles.credentialsInput}
             type="text"
             value={props.email}
@@ -27,6 +28,7 @@ const LogInUser = (props) => {
         </Grid>
         <Grid item xs={2}>
           <input
+            id="passwordInput"
             className={styles.credentialsInput}
             type="password"
             value={props.password}
@@ -38,6 +40,7 @@ const LogInUser = (props) => {
         <Grid item xs={5} />
         <Grid item xs={2}>
           <button
+            id="accountLoginBtn"
             onClick={props.onUserLogIn}
             className={styles.logInBtn}
           >

@@ -15,23 +15,24 @@ class Navigation extends Component {
           xs={2}
           className={[styles.titleElement, styles.title].join(" ")}
         >
-          <Link to="/" className={styles.logoNavOption}>
+          <Link to="/" className={styles.logoNavOption} id="logoBtn">
             Fitness Club XXX
           </Link>
         </Grid>
         <Grid item xs={6} className={styles.navElement}>
           <p
+            id="loginBtn"
             onClick={this.props.openSignIn}
             className={styles.navOptionParagraph}
           >
             Log in
           </p>
           {`|`}
-          <Link to="/account" className={styles.navOption}>
+          <Link id="accountBtn" to="/account" className={styles.navOption}>
             Account
           </Link>
           {`|`}
-          <Link to="/classes" className={styles.navOption}>
+          <Link id="classesBtn" to="/classes" className={styles.navOption}>
             Classes
           </Link>
         </Grid>

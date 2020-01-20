@@ -9,19 +9,20 @@ const UserInfo = (props) => {
       <Grid container className={styles.nameContainer}>
         <Grid item xs={1} />
         <Grid item xs={2}>
-          <h2>{`${props.firstName} ${props.lastName}`}</h2>
+          <h2 id="name">{`${props.firstName} ${props.lastName}`}</h2>
         </Grid>
       </Grid>
       <Grid container>
         <Grid item xs={1} />
         <Grid item xs={2}>
-          <p>{props.email}</p>
+          <p id="email">{props.email}</p>
         </Grid>
       </Grid>
       <Grid container>
         <Grid item xs={1} />
         <Grid item xs={2}>
           <button
+            id="showMyCarnetsBtn"
             onClick={props.onShowCarnetsClicked}
             className={styles.showCarnetsBtn}
             disabled={props.btnDisabled}

@@ -17,22 +17,22 @@ const SocialProof = () => (
       <h2>Social Proof Heading</h2>
     </Grid>
     <Grid item xs={2} className={styles.iconWrapper}>
-      <Facebook className={styles.icon} />
+      <Facebook id="Facebook" className={styles.icon} />
     </Grid>
     <Grid item xs={2} className={styles.iconWrapper}>
-      <Instagram className={styles.icon} />
+      <Instagram id="Instagram" className={styles.icon} />
     </Grid>
     <Grid item xs={2} className={styles.iconWrapper}>
-      <Twitter className={styles.icon} />
+      <Twitter id="Twitter" className={styles.icon} />
     </Grid>
     <Grid item xs={2} className={styles.iconWrapper}>
-      <WhatsApp className={styles.icon} />
+      <WhatsApp id="WhatsApp" className={styles.icon} />
     </Grid>
     <Grid item xs={2} className={styles.iconWrapper}>
-      <Pinterest className={styles.icon} />
+      <Pinterest id="Pinterest" className={styles.icon} />
     </Grid>
     <Grid item xs={2} className={styles.iconWrapper}>
-      <Whatshot className={styles.icon} />
+      <Whatshot id="Whatshot" className={styles.icon} />
     </Grid>
   </>
 )

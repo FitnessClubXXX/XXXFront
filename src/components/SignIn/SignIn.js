@@ -60,7 +60,7 @@ const SignIn = props => {
       onClose={props.closeSignIn}
       className={styles.signInDialog}
     >
-      <Grid container>
+      <Grid container id="signInDialog">
         <Grid item xs={9}>
           <p className={styles.signInTitle}>Sign In as Fitness Club Member</p>
         </Grid>

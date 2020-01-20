@@ -28,25 +28,28 @@ class Landing extends Component {
       <div className={styles.pageWrapper}>
         <Grid container>
           <Grid item xs={12} className={styles.landingPhotoWrapper}>
-            <img src={landing} className={styles.landingPhoto} alt="Landing" />
-            <p className={styles.landingPictureHeading}>Landing Page Picture Heading</p>
-            <p className={styles.landingPictureParagraph}>
+            <img src={landing} className={styles.landingPhoto} alt="Landing" id="landingPhoto" />
+            <p className={styles.landingPictureHeading} id="landingHeading">Landing Page Picture Heading</p>
+            <p className={styles.landingPictureParagraph} id="landingDescription">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit,
               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
             <button
+              id="landingLoginBtn"
               className={[styles.landingButton, styles.loginBtn].join(' ')}
               onClick={this.props.openSignIn}
             >
               Login
             </button>
             <button
+              id="landingAccountBtn"
               className={[styles.landingButton, styles.accountBtn].join(' ')}
               onClick={this._redirectToAccount}
             >
               Account
             </button>
             <button
+              id="landingClassesBtn"
               className={[styles.landingButton, styles.classesBtn].join(' ')}
               onClick={this._redirectToClasses}
             >
