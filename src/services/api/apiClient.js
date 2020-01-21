@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const apiClient = axios.create({
-  baseURL: process.env.REACT_APP_API_URL
+  baseURL: "https://fitness-back-stage.herokuapp.com"
 })
 
 // INFO: delete is reserved word which cannot be destructure and use further

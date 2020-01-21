@@ -70,6 +70,18 @@ class Classes extends Component {
       //   })
       // })
       .catch(err => console.log(err))
+
+    ClassAPI.all()
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        return this.setState({
+          name: data.name,
+          surname: data.surname,
+          email: data.email
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
