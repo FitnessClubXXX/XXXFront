@@ -61,7 +61,7 @@ class Classes extends Component {
 
   componentDidMount() {
     ClassAPI.all()
-      .then(res => res.json())
+      .then(data => console.log('eee', data)
       .then(data => {
         console.log(data)
         return this.setState({
