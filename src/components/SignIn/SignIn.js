@@ -42,10 +42,8 @@ const SignIn = props => {
     }
 
     UserAPI.login({
-      body: {
-        mail: email,
-        password
-    }
+      mail: email,
+      password
     })
       .then(res => {
         if (res.data.mail) {
