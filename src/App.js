@@ -10,6 +10,7 @@ import Classes from "./scenes/Classes/Classes";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer/Footer";
 import SignIn from "./components/SignIn/SignIn";
+import Order from "./scenes/Order/Order";
 
 import styles from "./styles.module.css";
 
@@ -28,6 +29,7 @@ const App = () => {
         <Switch>
           <Route exact path="/home" component={Home} />
           <Route exact path="/products/:id" component={Product} />
+          <Route exact path="/orders/:id" component={Order} />
           <Route exact path="/account" component={Account} />
           <Route exact path="/classes" component={Classes} />
           <Route

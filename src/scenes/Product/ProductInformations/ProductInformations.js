@@ -57,7 +57,10 @@ const ProductInformation = props => (
     <Grid container>
       <Grid item xs={12}>
         <hr />
-        <button className={styles.addToCartBtn}>Add To Cart</button>
+        <button
+          className={styles.addToCartBtn}
+          onClick={props.onProductOrder}
+        >Add To Cart</button>
         <hr />
       </Grid>
     </Grid>

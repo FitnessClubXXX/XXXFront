@@ -25,6 +25,11 @@ class Product extends Component {
     }
   }
 
+  _handleProductOrder = () => {
+    const { id } = this.props.match.params;
+    this.props.history.push(`/orders/${id-1}`)
+  }
+
   render() {
     const { fitnessClass } = this.state;
 
@@ -43,6 +48,7 @@ class Product extends Component {
             name={fitnessClass.name}
             price={fitnessClass.price}
             description={fitnessClass.description}
+            onProductOrder={this._handleProductOrder}
           />
         </Grid>
       </Grid>

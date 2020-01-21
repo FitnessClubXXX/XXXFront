@@ -1,0 +1,34 @@
+.summaryWrapper{
+  margin-left: 10%;
+  margin-top: 4rem;
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-bottom: 1rem;
+  line-height: 2em;
+  background-color: #d8d8d8;
+}
+
+.inputDiscountCode{
+  width: 65%;
+  padding: 0.3rem;
+  margin-right: 5%;
+}
+
+.codeApplyBtn{
+  padding: 0.3rem;
+  width: 25%;
+}
+
+.totalText{
+  font-weight: bold;
+}
+
+.correctDiscountCode{
+  color: green;
+  font-size: small;
+}
+
+.wrongDiscountCode{
+  color: red;
+  font-size: small;
+}

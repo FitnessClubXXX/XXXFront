@@ -1,0 +1,51 @@
+.paymentMethodWrapper{
+  padding-left: 14%;
+  padding-top: 2rem;
+}
+
+.paymentMethodWrapper input{
+  width: 100%;
+  padding-bottom: 0.3rem;
+  padding-top: 0.3rem;
+  margin-top: 0.3rem;
+}
+
+.cardFormWrapper{
+  position: relative;
+}
+
+.acceptedCards{
+  width: 20%;
+  position: absolute;
+  right: 0;
+  top: 1rem;
+}
+
+.payMethodBtnWrapper{
+  position: relative;
+}
+
+.returnToShipMethBtn{
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  margin-top: 1.7rem;
+}
+
+.completeOrderBtn{
+  margin-top: 1rem;
+  background-color: #334EFF;
+  border: none;
+  color: white;
+  padding: 0.7rem 4rem;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+}
+
+.errorTxt{
+  color: red;
+  font-size: small;
+}
