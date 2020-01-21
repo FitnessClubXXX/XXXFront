@@ -1,0 +1,11 @@
+{
+  "carnets": [
+    {
+      "id": 1,
+      "type": "Swimming",
+      "startDate": "10/12/2020 10:00",
+      "endDate": "10/12/2020 11:00",
+      "due": "1 hour"
+    }
+  ]
+}

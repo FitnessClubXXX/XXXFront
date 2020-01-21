@@ -56,9 +56,6 @@ class Account extends Component {
   componentDidMount() {
     const userId = sessionStorage.getItem('userId')
     if (userId) {
-      fetch(`https://api.coinmarketcap.com/v1/ticker/?limit=10`)
-      .then(res => res.json())
-      .then(json => this.setState({ data: json }));
       this.setState({ userId })
       this._fetchUserInfo(userId)
     } else {

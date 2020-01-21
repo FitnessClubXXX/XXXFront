@@ -33,11 +33,11 @@ class Home extends Component {
           <Grid item xs={1} />
           <Grid item xs={10}>
             <div className={styles.imageWrapper}>
-              <img src={home} className={styles.homePhoto} alt="Landing" />
-              <p className={styles.capturePictureHeading}>
+              <img src={home} className={styles.homePhoto} alt="Landing" id="homePhoto" />
+              <p className={styles.capturePictureHeading} id="capturePictureHeading">
                 Captured Picture of a facility
               </p>
-              <p className={styles.unassignedLinkParagraph}>
+              <p className={styles.unassignedLinkParagraph} id="unassignedLink">
                 A <b>paragraph</b> of a text with an{" "}
                 <a href="/home">unassigned link</a>
                 <br />A second row of text with a <a href="/home">web link</a>
@@ -48,7 +48,7 @@ class Home extends Component {
         <Grid container>
           <Grid item xs={1} />
           <Grid item xs={10}>
-            <div className={styles.featureMessageWrapper}>
+            <div className={styles.featureMessageWrapper} id="featureMessage">
               <p>Feature message</p>
             </div>
           </Grid>

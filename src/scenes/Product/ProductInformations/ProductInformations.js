@@ -8,8 +8,8 @@ const ProductInformation = props => (
     <Grid container>
       <Grid item xs={12} className={styles.nameContainer}>
         <div className={styles.spaceAroundWrapper}>
-          <p className={styles.headLabel}>{props.name}</p>
-          <p className={styles.headLabel}>{props.price}</p>
+          <p className={styles.headLabel} id="name">{props.name}</p>
+          <p className={styles.headLabel} id="price">{props.price}</p>
         </div>
         <hr />
       </Grid>
@@ -63,7 +63,7 @@ const ProductInformation = props => (
     </Grid>
     <Grid container>
       <Grid item xs={12}>
-        <p className={styles.descriptionLabel}>{props.description}</p>
+        <p className={styles.descriptionLabel} id="description">{props.description}</p>
       </Grid>
     </Grid>
   </>
