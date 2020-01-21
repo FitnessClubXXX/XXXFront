@@ -42,13 +42,14 @@ const SignIn = props => {
     }
 
     UserAPI.login({
-      mail: email,
-      password
-    }).then(res => res.json())
-      .then(data => {
-        console.log(data)
-        if (data.mail) {
-          sessionStorage.setItem('userId', data.mail)
+      body: {
+        mail: email,
+        password
+    }
+    })
+      .then(res => {
+        if (res.data.mail) {
+          sessionStorage.setItem('userId', res.data.mail)
           setLoading(false)
           props.closeSignIn();
           return history.push("/home");

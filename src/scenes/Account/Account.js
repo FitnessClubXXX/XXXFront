@@ -44,13 +44,11 @@ class Account extends Component {
 
   _fetchUserInfo = (userId) => {
     UserAPI.single(userId)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
+      .then(res => {
         return this.setState({
-          name: data.name,
-          surname: data.surname,
-          email: data.email
+          name: res.data.name,
+          surname: res.data.surname,
+          email: res.data.mail
         })
       })
       .catch(err => console.log(err))
@@ -76,13 +74,14 @@ class Account extends Component {
     }
 
     UserAPI.login({
-      mail: email,
-      password
-    }).then(res => res.json())
-      .then(data => {
-        console.log(data)
-        if (data.mail) {
-          sessionStorage.setItem('userId', data.mail)
+      body: {
+        mail: email,
+        password
+    }
+    })
+      .then(res => {
+        if (res.data.mail) {
+          sessionStorage.setItem('userId', res.data.mail)
           return this.setState({ logInUser: false })
         }
       })
@@ -100,11 +99,15 @@ class Account extends Component {
 
   _showCarnets = async () => {
     this.setState({ showCarnetsBtnDisabled: true })
-    const { data } = await CarnetAPI.all()
-    if (data.carnets) {
-      return this.setState({ carnets: data.carnets })
-    }
-    this.setState({ showCarnetsBtnDisabled: false })
+    // const { data } = await CarnetAPI.all()
+    CarnetAPI.userCarnets(this.state.userId)
+      .then(res => {
+        if (res.data) {
+          return this.setState({ carnets: res.data })
+        }
+        this.setState({ showCarnetsBtnDisabled: false })
+      })
+      .catch(err => console.log(err))
   }
 
   render() {

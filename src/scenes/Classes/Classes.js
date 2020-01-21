@@ -61,24 +61,10 @@ class Classes extends Component {
 
   componentDidMount() {
     ClassAPI.all()
-      .then(data => console.log('eee', data))
-      // .then(data => {
-      //   console.log(data)
-      //   return this.setState({
-      //     classes: data.classes,
-      //     loading: false
-      //   })
-      // })
-      .catch(err => console.log(err))
-
-    ClassAPI.all()
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
+      .then(res => {
         return this.setState({
-          name: data.name,
-          surname: data.surname,
-          email: data.email
+          classes: res.data,
+          loading: false
         })
       })
       .catch(err => console.log(err))
