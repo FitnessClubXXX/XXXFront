@@ -6,6 +6,7 @@ import Home from "./scenes/Home/Home";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer/Footer";
 import SignIn from "./components/SignIn/SignIn";
+import Order from "./scenes/Order/Order";
 
 const App = () => {
   const [signInOpen, setSignInOpen] = useState(false);
@@ -19,12 +20,9 @@ const App = () => {
       <Navigation openSignIn={openSignIn} />
       <SignIn open={signInOpen} closeSignIn={closeSignIn} />
       <Switch>
-        <Route path="/home">
-          <Home />
-        </Route>
-        <Route path="/">
-          <Landing />
-        </Route>
+        <Route path="/order/:id" component={Order} />
+        <Route path="/home" component={Home} />
+        <Route path="/" component={Landing} />
       </Switch>
       <Footer />
     </Router>

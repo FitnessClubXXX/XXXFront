@@ -2,6 +2,8 @@
   height: 6rem;
   border-top: 2px solid black;
   background-color: #d8d8d8;
+  position: absolute;
+  bottom: 0;
 }
 
 .siteTitle {

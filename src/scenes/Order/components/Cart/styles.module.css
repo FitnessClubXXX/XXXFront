@@ -1,0 +1,45 @@
+.cartWrapper{
+  padding-left: 14%;
+  padding-top: 2rem;
+}
+
+.productImg{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 30%;
+  float: left;
+}
+
+.productName{
+  text-align: center;
+  padding-top: 4rem;
+}
+
+.productPrice{
+  padding-top: 4rem;
+  font-weight: bold;
+}
+
+.quantitySelector{
+  margin-top: 4rem;
+}
+
+.subtotalValue{
+  text-align: right;
+  font-weight: bold;
+}
+
+.checkoutBtn{
+  margin-top: 1rem;
+  background-color: #334EFF;
+  border: none;
+  color: white;
+  padding: 0.7rem 4rem;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checkoutBtn:hover{
+  background-color: #2C37C9;
+}
