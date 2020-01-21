@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid} from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 
 import Cart from './components/Cart/Cart'
 import CustomerInfo from './components/CustomerInfo/CustomerInfo'
@@ -14,12 +14,9 @@ import styles from './styles.module.css'
 
 class Order extends React.Component {
 
-  productId = this.props.match.params.id
-  price = parseInt(fitnessClasses[this.productId].price.substr(1))
-
   state = {
     orderProcessStep: 'cart',
-    subtotal: this.price,
+    subtotal: null,
     shipping: '',
     shippingCost: '-',
     estTaxes: '-',
@@ -34,61 +31,79 @@ class Order extends React.Component {
     zip: '',
     cardNumber: '',
     discount: 1,
-    orderId: ''
+    orderId: '',
+    price: null
   }
 
-  subtotalInfo = (subtotal) =>{
+  componentDidMount() {
+    const productId = this.props.match.params.id
+    const price = parseInt(fitnessClasses[productId].price.substr(1))
+    this.setState({ subtotal: price, price })
+  }
+
+  subtotalInfo = (subtotal) => {
     this.setState({
       subtotal: (subtotal * this.state.discount).toFixed(2)
     })
   }
 
-  processStep = (orderProcessStep) =>{
-    this.setState({
-      orderProcessStep: orderProcessStep
-    })
+  processStep = (orderProcessStep) => {
+    this.setState({ orderProcessStep })
   }
 
-  customerInfo = (email, firstName, lastName, address, city, country, addressState, zip, orderProcessStep) => {
-    this.setState({
-      email: email,
-      firstName: firstName,
-      lastName: lastName,
-      address: address,
-      city: city,
-      country: country,
-      addressState: addressState,
-      zip: zip,
-      orderProcessStep: orderProcessStep
-    })
+  customerInfo = (
+    email,
+    firstName, 
+    lastName, 
+    address, 
+    city, 
+    country, 
+    addressState, 
+    zip,
+    orderProcessStep) => {
+      this.setState({
+        email,
+        firstName,
+        lastName,
+        address,
+        city,
+        country,
+        addressState,
+        zip,
+        orderProcessStep
+      })
+    }
 
-  }
-
-  grantDiscount = (granted) =>{
-    if(granted === "yes")
+  grantDiscount = (granted) => {
+    if (granted) {
       this.setState({
         discount: 0.8,
         subtotal: (this.state.subtotal * 0.8).toFixed(2)
       })
+    }
   }
 
-  shippingCostInfo = (shippingCost, shippingMethodName) =>{
-    const tax = (0.23 * (parseFloat(shippingCost) + parseFloat(this.state.subtotal))).toFixed(2)
-    const total = (parseFloat(shippingCost) + parseFloat(tax) + parseFloat(this.state.subtotal)).toFixed(2)
+  shippingCostInfo = (shippingCost, shippingMethodName) => {
+    const subtotal = parseFloat(this.state.subtotal)
+    const parsedShippingCost = parseFloat(shippingCost)
+
+    const tax = (0.23 * (parsedShippingCost + subtotal)).toFixed(2)
+    const total = (parsedShippingCost + tax + subtotal).toFixed(2)
+
     this.setState({
-      shippingCost: shippingCost,
+      shippingCost: parsedShippingCost,
       estTaxes: tax,
-      total: total,
+      total,
       shipping: shippingMethodName
     })
   }
 
-  paymentMethodInfo = (cardNumber, processStep) =>{
+  paymentMethodInfo = (cardNumber, processStep) => {
     const rand = Math.ceil(Math.random() * 10000)
 
     this.setState({
       orderId: rand,
-      cardNumber: cardNumber,
+      cardNumber,
       orderProcessStep: processStep
     })
     console.log(rand)
@@ -97,8 +112,7 @@ class Order extends React.Component {
     //tutaj request na BE i jeśli feedback jest gitara przekierowanie na processStep "success"
   }
 
-  render(){
-    let content = null
+  render() {
     const { 
       orderProcessStep,
       subtotal, 
@@ -113,67 +127,55 @@ class Order extends React.Component {
       country, 
       zip, 
       orderId, 
-      cardNumber 
+      cardNumber,
+      price 
     } = this.state
 
     let addressInfo = ` ${address} , ${city} , ${country} ${zip}`
     let userFullName = `${firstName} ${lastName}`
 
-    switch(this.state.orderProcessStep) {
-      case 'cart':
-        content =(
-          <Cart 
-          onSubmit={this.processStep} 
-          onChange={this.subtotalInfo} 
-          subtotal={subtotal} 
-          price={this.price} 
-          imageId={this.props.match.params.id}/>
-        )
-        break;
-      case 'customerInfo':
-        content = (
-          <CustomerInfo 
-          onReturnBtn={this.processStep} 
-          onSubmit={this.customerInfo} />
-        )
-        break;
-      case 'shippingMethod':
-        content = (
-          <ShippingMethod 
-          onChange={this.shippingCostInfo} 
-          address={addressInfo.toUpperCase()} 
-          onSubmit={this.processStep}/>
-        )
-        break;
-      case 'paymentMethod':
-        content = (
-          <PaymentMethod 
-          onSubmit={this.paymentMethodInfo} 
-          address={addressInfo.toUpperCase()} 
-          shippingMethodName={shipping}
-          />
-        )
-        break;
-      case 'success':
-        content = (
-          <Success
-          orderId={orderId}
-          userName={userFullName.toUpperCase()}
-          address={addressInfo.toUpperCase()}
-          cardNumber={cardNumber}
-          shippingMethod={shipping}
-          total={total}  />
-        )
-        break;
-      default:
-       
-    }
-
-    return(
-      <>
+    return (
       <Grid container className={styles.orderProcessWrapper}>
         <Grid item xs={7}>
-          {content}
+          {orderProcessStep === 'cart' && (
+            <Cart 
+              onSubmit={this.processStep} 
+              onChange={this.subtotalInfo} 
+              subtotal={subtotal} 
+              price={price} 
+              imageId={this.props.match.params.id}
+            />
+          )}
+          {orderProcessStep === 'customerInfo' && (
+            <CustomerInfo 
+              onReturnBtn={this.processStep} 
+              onSubmit={this.customerInfo}
+            />
+          )}
+          {orderProcessStep === 'shippingMethod' && (
+            <ShippingMethod 
+              onChange={this.shippingCostInfo} 
+              address={addressInfo.toUpperCase()} 
+              onSubmit={this.processStep}
+            />
+          )}
+          {orderProcessStep === 'paymentMethod' && (
+            <PaymentMethod 
+              onSubmit={this.paymentMethodInfo} 
+              address={addressInfo.toUpperCase()} 
+              shippingMethodName={shipping}
+            />
+          )}
+          {orderProcessStep === 'success' && (
+            <Success
+              orderId={orderId}
+              userName={userFullName.toUpperCase()}
+              address={addressInfo.toUpperCase()}
+              cardNumber={cardNumber}
+              shippingMethod={shipping}
+              total={total}
+            />
+          )}
         </Grid>
         <Grid item xs={3}>
           <Summary 
@@ -186,7 +188,6 @@ class Order extends React.Component {
           />
         </Grid>
       </Grid>
-      </>
     )
   }
 }

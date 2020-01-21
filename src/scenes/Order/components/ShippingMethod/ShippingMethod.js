@@ -4,29 +4,29 @@ import {Grid} from '@material-ui/core'
 import styles from './styles.module.css'
 
 class ShippingMethod extends React.Component{
-
-  state={
+  state = {
     error: ""
   }
 
-  handleChange = (event) => {
+  handleChange = ({ target }) => {
     this.props.onChange(
-      event.target.value,
-      event.target.id
+      target.value,
+      target.id
     );
   }
 
   handleSubmit = (event) => {
-    let check = (
+    const check = (
     document.getElementById('UPS Ground').checked || 
     document.getElementById('UPS 3 Day Select').checked || 
     document.getElementById('UPS 2nd Day Air').checked || 
     document.getElementById('UPS Next Day Air').checked) 
 
-    if(event.target.name === "paymentMethod"){
+    const { target } = event 
+    if(target.name === "paymentMethod"){
       if(check){
         this.props.onSubmit(
-          event.target.name
+          target.name
         );
         this.setState({error: ""})
       }else{
@@ -34,17 +34,16 @@ class ShippingMethod extends React.Component{
       }
     }else{
       this.props.onSubmit(
-        event.target.name
+        target.name
       );
     }
     
   }
 
-  render(){
-
+  render() {
     const {error} = this.state
 
-    return(
+    return (
       <Grid container className={styles.shippingMethodWrapper}>
         <Grid item xs={12}>
           <h2>Shipping Address</h2>
@@ -69,15 +68,17 @@ class ShippingMethod extends React.Component{
         <Grid item className={styles.shippMethodBtnWrapper} xs={12}>
           <hr/>
           <button 
-          name="customerInfo" 
-          className={styles.returnToCustInfBtn}
-          onClick={this.handleSubmit}>
+            name="customerInfo" 
+            className={styles.returnToCustInfBtn}
+            onClick={this.handleSubmit}
+          >
             {'< Return to Customer Information'}
           </button>
           <button 
-          name="paymentMethod" 
-          className={styles.contToPaymentMethodBtn} 
-          onClick={this.handleSubmit}>
+            name="paymentMethod" 
+            className={styles.contToPaymentMethodBtn} 
+            onClick={this.handleSubmit}
+          >
             Continue to Payment Method
           </button>
         </Grid>

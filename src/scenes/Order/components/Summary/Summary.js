@@ -19,7 +19,7 @@ class CustomerInfo extends React.Component{
 
   handleDiscount = () =>{
     if(this.state.discountCode === "FITNESS20"){
-      this.props.onSubmit('yes');
+      this.props.onSubmit(true);
       this.setState({
         discountInfo: 'Your discount: -20%',
         discountInfoStyling: styles.correctDiscountCode

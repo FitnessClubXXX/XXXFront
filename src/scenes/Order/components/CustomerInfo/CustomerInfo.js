@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid} from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 
 import styles from './styles.module.css'
 
@@ -46,8 +46,6 @@ class CustomerInfo extends React.Component{
 
     const emailPattern = new RegExp(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) ;
-    
-    const numbers = new RegExp(/^[0-9]+$/)
 
     if(email.length > 0){
       if(emailPattern.test(email)){
@@ -104,7 +102,7 @@ class CustomerInfo extends React.Component{
     }
 
     if(zip.length > 0){
-      if(zip.length > 4 && zip.length < 7 && numbers.test(zip) ){
+      if(zip.length > 4 && zip.length < 7){
         this.setState({zipErr: ""})
       }else{
         this.setState({zipErr: "Incorrect zip format"})
@@ -131,16 +129,11 @@ class CustomerInfo extends React.Component{
     }
   }
 
-  handleReturn = () =>{
-    this.props.onReturnBtn(
-      'cart'
-    );
+  handleReturn = () => {
+    this.props.onReturnBtn('cart')
   }
 
   render(){
-
-    
-
     const { 
       email, 
       firstName, 
@@ -159,7 +152,6 @@ class CustomerInfo extends React.Component{
       addressStateErr, 
       zipErr 
     } = this.state
-
 
     return(
       <Grid container className={styles.customerInfoWrapper}>
@@ -235,11 +227,11 @@ class CustomerInfo extends React.Component{
         </Grid>
         <Grid item xs={5}>
           <select
-          name="country"
-          value={country} 
-          className={styles.quantitySelector}
-          onChange={this.handleChange}
-          required
+            name="country"
+            value={country} 
+            className={styles.quantitySelector}
+            onChange={this.handleChange}
+            required
           >
             <option value="" disabled hidden>Country</option>
             <option value={"Poland"}>Poland</option>
@@ -248,11 +240,11 @@ class CustomerInfo extends React.Component{
         </Grid>
         <Grid item xs={5}>
           <select
-          name="addressState" 
-          value={addressState}
-          className={styles.quantitySelector}
-          onChange={this.handleChange}
-          required
+            name="addressState" 
+            value={addressState}
+            className={styles.quantitySelector}
+            onChange={this.handleChange}
+            required
           >
             <option value="" disabled hidden>State</option>
             <option value={"Dolnośląskie"}>Dolnośląskie</option>
@@ -267,7 +259,7 @@ class CustomerInfo extends React.Component{
         <Grid item xs={2}>
          <form onSubmit={this.handleSubmit} noValidate>
             <input
-              type="text" 
+              type="number" 
               name="zip"
               placeholder="Zip"
               value={zip} 

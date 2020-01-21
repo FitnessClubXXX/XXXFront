@@ -1,13 +1,13 @@
 import React from 'react'
-import {Grid} from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 
 import cards from '../../../../assets/photos/cards.png'
 
 import styles from './styles.module.css'
 
-class PaymentMethod extends React.Component{
+class PaymentMethod extends React.Component {
 
-  state={
+  state = {
     cardNumber: '',
     nameOnCard: '',
     expirationDate: '',
@@ -18,7 +18,7 @@ class PaymentMethod extends React.Component{
     cvvErr: ''
   }
 
-  handleChange = (event) =>{
+  handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -95,7 +95,7 @@ class PaymentMethod extends React.Component{
     }
   }
 
-  render(){
+  render() {
     const {
       cardNumber,
       nameOnCard,
@@ -106,7 +106,7 @@ class PaymentMethod extends React.Component{
       expirtaionDateErr,
       cvvErr
     } = this.state
-    return(
+    return (
       <Grid container className={styles.paymentMethodWrapper}>
         <Grid item xs={12}>
           <h2>Shipping Address</h2>
@@ -179,15 +179,17 @@ class PaymentMethod extends React.Component{
         <Grid item className={styles.payMethodBtnWrapper} xs={12}>
           <hr/>
           <button
-          name="shippingMethod"
-          className={styles.returnToShipMethBtn}
-          onClick={this.handleSubmit}>
+            name="shippingMethod"
+            className={styles.returnToShipMethBtn}
+            onClick={this.handleSubmit}
+          >
             {'<Return to Shipping Method'}
-            </button>
+          </button>
           <button 
-          name="success" 
-          className={styles.completeOrderBtn}
-          onClick={this.handleSubmit}>
+            name="success" 
+            className={styles.completeOrderBtn}
+            onClick={this.handleSubmit}
+          >
             Complete Order
           </button>
         </Grid>

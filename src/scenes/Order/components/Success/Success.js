@@ -1,12 +1,12 @@
 import React from 'react'
-import {Grid} from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 
 import successImg from './images/successImg.png'
 import card from './images/card.png'
 
 import styles from './styles.module.css'
 
-const Success = (props) =>{
+const Success = (props) => {
   return(
     <Grid container className={styles.successWrapper}>
       <Grid item xs={12}>
