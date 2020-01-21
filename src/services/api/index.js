@@ -1,15 +1,15 @@
 import {
-  get
-  // post,
+  get,
+  post,
   // put,
   // destroy
 } from "./apiClient"
 
 export const UserAPI = {
   login: params =>
-    get(`/login`, params),
+    post(`/login`, params),
   single: id =>
-    get(`/users/${id}`)
+    get(`/user/${id}`)
 }
 
 export const CarnetAPI = {

@@ -45,11 +45,14 @@ class Account extends Component {
   _fetchUserInfo = (userId) => {
     UserAPI.single(userId)
       .then(res => res.json())
-      .then(data => this.setState({
-        name: data.name,
-        surname: data.surname,
-        email: data.email
-      }))
+      .then(data => {
+        console.log(data)
+        return this.setState({
+          name: data.name,
+          surname: data.surname,
+          email: data.email
+        })
+      })
       .catch(err => console.log(err))
   }
 
@@ -72,15 +75,18 @@ class Account extends Component {
       return alert('Password cannot be empty!')
     }
 
-    // TODO: Uncomment when BE done
-    // const { data } = await UserAPI.login({ email, password })
-    // TODO: Uncomment when BE done
-    // if (data.userId) {
-    if (true) {
-      // sessionStorage.setItem('userId', data.userId)
-      // this._fetchUserInfo(data.userId)
-      return this.setState({ logInUser: false })
-    }
+    UserAPI.login({
+      mail: email,
+      password
+    }).then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if (data.mail) {
+          sessionStorage.setItem('userId', data.mail)
+          return this.setState({ logInUser: false })
+        }
+      })
+      .catch(err => console.log(err))
     alert('Invalid email or passsword')
   }
 
