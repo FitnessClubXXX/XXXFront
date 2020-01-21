@@ -1,0 +1,18 @@
+.loading {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: 5rem;
+}
+
+.tableCell {
+  text-align: center;
+}
+
+.nameHeader {
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.nameColumn {
+  margin-left: 1rem;
+}

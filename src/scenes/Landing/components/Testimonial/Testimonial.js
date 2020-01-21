@@ -5,7 +5,7 @@ import { Person } from '@material-ui/icons'
 import styles from './styles.module.css'
 
 const Testimonial = ({ testimonial, name }) => (
-  <Grid item xs={6}>
+  <Grid item xs={6} className={"testimonials"}>
     <Person className={styles.personIcon} />
     <div className={styles.testimonialParagraph}>
       { testimonial }

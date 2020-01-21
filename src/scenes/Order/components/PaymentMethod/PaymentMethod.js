@@ -123,7 +123,7 @@ class PaymentMethod extends React.Component{
           <img src={cards} className={styles.acceptedCards} alt="Accepted cards"/>
           <form>
             <input
-              type="text" 
+              type="number" 
               name="cardNumber"
               placeholder="Card number"
               value={cardNumber} 

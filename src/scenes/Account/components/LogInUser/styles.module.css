@@ -1,0 +1,26 @@
+.emailContainer {
+  margin-top: 4rem;
+}
+
+.label {
+  font-size: 1.1rem;
+  margin-left: 4rem;
+}
+
+.credentialsInput {
+  font-size: 1rem;
+  padding: 0.1rem;
+  margin-top: 0.9rem;
+  width: 90%;
+}
+
+.logInBtn {
+  width: 100% !important;
+  font-size: 1rem;
+  padding: 0.3rem;
+  border-radius: 0%;
+}
+
+.logInBtn:hover {
+  background-color: #dddddd;
+}

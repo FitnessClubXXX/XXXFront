@@ -1,0 +1,65 @@
+.nameContainer {
+  text-align: center;
+}
+
+.spaceAroundWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headLabel {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.sizingChartLabel {
+  text-decoration: underline;
+  color: blue;
+}
+
+.sizingChartLabel:hover {
+  cursor: pointer;
+}
+
+.sizingButton {
+  width: 90%;
+  border: solid 1px black;
+  border-radius: 0%;
+  background-color: #d8d8d8;
+  height: 1.8rem;
+  font-size: 0.8rem;
+}
+
+.rightSizingButton {
+  float: right;
+}
+
+.selector {
+  margin-top: 1rem;
+  height: 1.8rem;
+  border: solid 1px black;
+  background-color: #d8d8d8;
+  width: 100%;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.quantityLabel {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.addToCartBtn {
+  width: 100%;
+  border: 1px solid black;
+  background-color: #005bee;
+  color: white;
+  height: 2rem;
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.descriptionLabel {
+  margin-bottom: 2rem;
+}

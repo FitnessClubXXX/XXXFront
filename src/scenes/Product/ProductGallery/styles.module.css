@@ -1,0 +1,16 @@
+.mainImg img {
+  max-width: 100%;
+}
+.productGallery {
+  padding-left: 6.4rem;
+  padding-bottom: 1rem;
+}
+.productGallery {
+  margin-left: 8rem;
+}
+
+.productGallery img {
+  max-width: 15%;
+  float: left;
+  margin-right: 0.2rem;
+}

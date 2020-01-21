@@ -5,7 +5,7 @@ import styles from './styles.module.css'
 
 const Feature = ({ featureName, description, photo, photoAlt }) => (
   <Grid item xs={12} className={styles.featureWrapper}>
-    <Grid container>
+    <Grid container className={"features"}>
       <Grid item xs={4} className={styles.descriptionWrapper}>
         <h1>{featureName}</h1>
         <p className={styles.descriptionParagraph}>{description}</p>
