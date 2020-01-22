@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table-6'
 
-import { ClassAPI } from '../../services/api/'
+import { ClassAPI } from '../../services/api'
 
 import styles from './styles.module.css'
 

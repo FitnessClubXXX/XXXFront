@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
 
-import { CarnetAPI } from "../../services/api";
+import { CarnetAPI } from "../../../../services/api";
 import styles from './styles.module.css'
 
 class Cart extends React.Component {
