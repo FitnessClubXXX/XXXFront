@@ -38,14 +38,15 @@ class Order extends React.Component {
     const productId = this.props.match.params.id
     CarnetAPI.all()
       .then(res => {
+        console.log('data', res.data)
+        console.log('productId', productId)
         const fitnessClass = res.data.find(
           fClass => fClass.id === parseInt(productId)
         );
+        console.log('fitnessClass', fitnessClass)
         if (fitnessClass) {
           const price = parseInt(fitnessClass.price.substr(1))
           this.setState({ subtotal: price, price })
-        } else {
-          this.props.history.push("/home");
         }
       })
       .catch(err => console.log(err))

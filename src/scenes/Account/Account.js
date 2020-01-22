@@ -13,20 +13,20 @@ const columns = [
     width: 80
   },
   {
-    Header: 'Type',
-    accessor: 'type',
+    Header: 'Name',
+    accessor: 'name',
   },
   {
-    Header: 'Start',
-    accessor: 'startDate',
+    Header: 'Price',
+    accessor: 'price',
   },
   {
-    Header: 'End',
-    accessor: 'endDate',
+    Header: 'Description',
+    accessor: 'description',
   },
   {
-    Header: 'Due',
-    accessor: 'due',
+    Header: 'User',
+    accessor: 'userId',
   }
 ]
 
@@ -84,6 +84,7 @@ class Account extends Component {
             logInUser: false,
             name: res.data.name,
             surname: res.data.surname,
+            userId: res.data.mail
           })
         }
       })
@@ -100,11 +101,8 @@ class Account extends Component {
 
   _showCarnets = async () => {
     this.setState({ showCarnetsBtnDisabled: true })
-    // const { data } = await CarnetAPI.all()
-    console.log('state', this.state.userId)
     CarnetAPI.userCarnets(this.state.userId)
       .then(res => {
-        console.log('elo', res)
         if (res.data) {
           return this.setState({ carnets: res.data })
         }
