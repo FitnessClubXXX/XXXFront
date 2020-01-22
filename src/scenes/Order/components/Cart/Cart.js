@@ -1,11 +1,30 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
 
-import { fitnessClasses } from "../../../../services/data/fitnessClasses.json"
-
+import { CarnetAPI } from "../../services/api";
 import styles from './styles.module.css'
 
 class Cart extends React.Component {
+  state = {
+    fitnessClass: null,
+    loading: true
+  }
+
+  componentDidMount() {
+    const { id } = this.props.productId;
+    CarnetAPI.all()
+      .then(res => {
+        const fitnessClass = res.data.find(
+          fClass => fClass.id === parseInt(id)
+        );
+        if (fitnessClass) {
+          this.setState({ fitnessClass, loading: false });
+        } else {
+          this.props.history.push("/home");
+        }
+      })
+      .catch(err => console.log(err))
+  }
 
   handleChange = (event) => {
     this.props.onChange(
@@ -18,6 +37,14 @@ class Cart extends React.Component {
   }
   
   render() {
+    if (this.state.loading) {
+      return (
+        <div>
+          <p>Loading...</p>
+        </div>
+      )
+    }
+
     return(
       <Grid container className={styles.cartWrapper}>
         <Grid item xs={12}>
@@ -27,8 +54,8 @@ class Cart extends React.Component {
         <Grid item xs={7}>
           Item
           <hr/>
-          <img className={styles.productImg} src={fitnessClasses[this.props.imageId].photos[0]} alt="Product" />
-          <div className={styles.productName}>{fitnessClasses[this.props.imageId].name}</div>
+          <img className={styles.productImg} src={this.state.fitnessClass.photos[0]} alt="Product" />
+          <div className={styles.productName}>{this.state.fitnessClass.name}</div>
         </Grid>
         <Grid item xs={3}>
           Price

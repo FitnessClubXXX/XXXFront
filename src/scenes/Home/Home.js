@@ -2,18 +2,34 @@ import React, { Component } from "react";
 import { Grid } from "@material-ui/core";
 
 import home from "../../assets/photos/home.jpg";
-import { fitnessClasses } from "../../services/data/fitnessClasses.json";
 
 import styles from "./styles.module.css";
 import ClassTile from "./components/ClassTile/ClassTile";
+import { CarnetAPI } from "../../services/api";
 
 class Home extends Component {
+  state = {
+    loading: true,
+    carnets: []
+  }
+
   _redirectToClass = id => {
     this.props.history.push(`/products/${id}`);
   };
 
+  componentDidMount() {
+    CarnetAPI.all()
+      .then(res => {
+        this.setState({
+          carnets: res.data,
+          loading: false
+        })
+      })
+      .catch(err => console.log(err))
+  }
+
   _classTiles = () =>
-    fitnessClasses.map(fitnessClass => {
+    this.state.carnets.map(fitnessClass => {
       return (
         <ClassTile
           key={fitnessClass.id}

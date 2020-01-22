@@ -3,10 +3,9 @@ import { Grid } from "@material-ui/core";
 
 import ProductGallery from "./ProductGallery/ProductGallery";
 import ProductInformation from "./ProductInformations/ProductInformations";
+import { CarnetAPI } from "../../services/api";
 
 import styles from "./styles.module.css";
-
-import { fitnessClasses } from "../../services/data/fitnessClasses.json";
 
 class Product extends Component {
   state = {
@@ -15,19 +14,23 @@ class Product extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    const fitnessClass = fitnessClasses.find(
-      fClass => fClass.id === parseInt(id)
-    );
-    if (fitnessClass) {
-      this.setState({ fitnessClass });
-    } else {
-      this.props.history.push("/home");
-    }
+    CarnetAPI.all()
+      .then(res => {
+        const fitnessClass = res.data.find(
+          fClass => fClass.id === parseInt(id)
+        );
+        if (fitnessClass) {
+          this.setState({ fitnessClass });
+        } else {
+          this.props.history.push("/home");
+        }
+      })
+      .catch(err => console.log(err))
   }
 
   _handleProductOrder = () => {
     const { id } = this.props.match.params;
-    this.props.history.push(`/orders/${id-1}`)
+    this.props.history.push(`/orders/${id}`)
   }
 
   render() {

@@ -80,7 +80,11 @@ class Account extends Component {
       .then(res => {
         if (res.data.mail) {
           sessionStorage.setItem('userId', res.data.mail)
-          return this.setState({ logInUser: false })
+          return this.setState({
+            logInUser: false,
+            name: res.data.name,
+            surname: res.data.surname,
+          })
         }
       })
       .catch(err => alert('Invalid email or passsword'))
@@ -97,7 +101,7 @@ class Account extends Component {
   _showCarnets = async () => {
     this.setState({ showCarnetsBtnDisabled: true })
     // const { data } = await CarnetAPI.all()
-    console.log('state', this.stata.userId)
+    console.log('state', this.state.userId)
     CarnetAPI.userCarnets(this.state.userId)
       .then(res => {
         console.log('elo', res)
