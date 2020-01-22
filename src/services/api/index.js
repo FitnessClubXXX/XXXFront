@@ -16,7 +16,9 @@ export const CarnetAPI = {
   all: () => 
     get(`/carnets`),
   userCarnets: (userId) =>
-    get(`/carnets/${userId}`)
+    get(`/carnets/${userId}`),
+  create: params =>
+    post(`/carnets`, params)
 }
 
 export const ClassAPI = {

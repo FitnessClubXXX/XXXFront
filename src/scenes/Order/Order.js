@@ -109,16 +109,21 @@ class Order extends React.Component {
 
   paymentMethodInfo = (cardNumber, processStep) => {
     const rand = Math.ceil(Math.random() * 10000)
+    const userId = sessionStorage.getItem('userId')
+    const productId = this.props.match.params.id
 
-    this.setState({
-      orderId: rand,
-      cardNumber,
-      orderProcessStep: processStep
+    CarnetAPI.create({
+      mail: userId,
+      carnetId: productId
     })
-    console.log(rand)
-
-
-    //tutaj request na BE i jeśli feedback jest gitara przekierowanie na processStep "success"
+      .then(res => {
+        this.setState({
+          orderId: rand,
+          cardNumber,
+          orderProcessStep: processStep
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
