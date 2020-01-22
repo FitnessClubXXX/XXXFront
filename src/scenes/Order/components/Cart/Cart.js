@@ -11,16 +11,14 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.productId;
+    const { productId } = this.props;
     CarnetAPI.all()
       .then(res => {
         const fitnessClass = res.data.find(
-          fClass => fClass.id === parseInt(id)
+          fClass => fClass.id === parseInt(productId)
         );
         if (fitnessClass) {
           this.setState({ fitnessClass, loading: false });
-        } else {
-          this.props.history.push("/home");
         }
       })
       .catch(err => console.log(err))
