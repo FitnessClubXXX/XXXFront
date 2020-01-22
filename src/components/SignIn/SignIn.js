@@ -53,8 +53,8 @@ const SignIn = props => {
           return history.push("/home");
         }
       })
-      .catch(err => console.log(err))
-    alert('Invalid email or passsword')
+      .catch(err => alert('Invalid email or passsword'))
+    setLoading(false)
   };
 
   return (

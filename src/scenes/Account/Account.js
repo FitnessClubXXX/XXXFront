@@ -83,8 +83,7 @@ class Account extends Component {
           return this.setState({ logInUser: false })
         }
       })
-      .catch(err => console.log(err))
-    alert('Invalid email or passsword')
+      .catch(err => alert('Invalid email or passsword'))
   }
 
   _handleEmailChange = (e) => {
@@ -98,14 +97,16 @@ class Account extends Component {
   _showCarnets = async () => {
     this.setState({ showCarnetsBtnDisabled: true })
     // const { data } = await CarnetAPI.all()
+    console.log('state', this.stata.userId)
     CarnetAPI.userCarnets(this.state.userId)
       .then(res => {
+        console.log('elo', res)
         if (res.data) {
           return this.setState({ carnets: res.data })
         }
-        this.setState({ showCarnetsBtnDisabled: false })
       })
       .catch(err => console.log(err))
+    this.setState({ showCarnetsBtnDisabled: false })
   }
 
   render() {
