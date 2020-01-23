@@ -13,20 +13,20 @@ const columns = [
     width: 80
   },
   {
-    Header: 'Type',
-    accessor: 'type',
+    Header: 'Name',
+    accessor: 'name',
   },
   {
-    Header: 'Start',
-    accessor: 'startDate',
+    Header: 'Price',
+    accessor: 'price',
   },
   {
-    Header: 'End',
-    accessor: 'endDate',
+    Header: 'Description',
+    accessor: 'description',
   },
   {
-    Header: 'Due',
-    accessor: 'due',
+    Header: 'User',
+    accessor: 'userId',
   }
 ]
 
@@ -44,12 +44,13 @@ class Account extends Component {
 
   _fetchUserInfo = (userId) => {
     UserAPI.single(userId)
-      .then(res => res.json())
-      .then(data => this.setState({
-        name: data.name,
-        surname: data.surname,
-        email: data.email
-      }))
+      .then(res => {
+        return this.setState({
+          name: res.data.name,
+          surname: res.data.surname,
+          email: res.data.mail
+        })
+      })
       .catch(err => console.log(err))
   }
 
@@ -72,16 +73,22 @@ class Account extends Component {
       return alert('Password cannot be empty!')
     }
 
-    // TODO: Uncomment when BE done
-    // const { data } = await UserAPI.login({ email, password })
-    // TODO: Uncomment when BE done
-    // if (data.userId) {
-    if (true) {
-      // sessionStorage.setItem('userId', data.userId)
-      // this._fetchUserInfo(data.userId)
-      return this.setState({ logInUser: false })
-    }
-    alert('Invalid email or passsword')
+    UserAPI.login({
+      mail: email,
+      password
+    })
+      .then(res => {
+        if (res.data.mail) {
+          sessionStorage.setItem('userId', res.data.mail)
+          return this.setState({
+            logInUser: false,
+            name: res.data.name,
+            surname: res.data.surname,
+            userId: res.data.mail
+          })
+        }
+      })
+      .catch(err => alert('Invalid email or passsword'))
   }
 
   _handleEmailChange = (e) => {
@@ -94,10 +101,13 @@ class Account extends Component {
 
   _showCarnets = async () => {
     this.setState({ showCarnetsBtnDisabled: true })
-    const { data } = await CarnetAPI.all()
-    if (data.carnets) {
-      return this.setState({ carnets: data.carnets })
-    }
+    CarnetAPI.userCarnets(this.state.userId)
+      .then(res => {
+        if (res.data) {
+          return this.setState({ carnets: res.data })
+        }
+      })
+      .catch(err => console.log(err))
     this.setState({ showCarnetsBtnDisabled: false })
   }
 

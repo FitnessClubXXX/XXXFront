@@ -7,8 +7,7 @@ import Summary from './components/Summary/Summary'
 import ShippingMethod from './components/ShippingMethod/ShippingMethod'
 import PaymentMethod from './components/PaymentMethod/PaymentMethod'
 import Success from './components/Success/Success'
-
-import { fitnessClasses } from "../../services/data/fitnessClasses.json"
+import { CarnetAPI } from "../../services/api";
 
 import styles from './styles.module.css'
 
@@ -37,8 +36,18 @@ class Order extends React.Component {
 
   componentDidMount() {
     const productId = this.props.match.params.id
-    const price = parseInt(fitnessClasses[productId].price.substr(1))
-    this.setState({ subtotal: price, price })
+    CarnetAPI.all()
+      .then(res => {
+        const fitnessClass = res.data.find(
+          fClass => fClass.id === parseInt(productId)
+        );
+        
+        if (fitnessClass) {
+          const price = parseInt(fitnessClass.price.substr(1))
+          this.setState({ subtotal: price, price })
+        }
+      })
+      .catch(err => console.log(err))
   }
 
   subtotalInfo = (subtotal) => {
@@ -100,16 +109,21 @@ class Order extends React.Component {
 
   paymentMethodInfo = (cardNumber, processStep) => {
     const rand = Math.ceil(Math.random() * 10000)
+    const userId = sessionStorage.getItem('userId')
+    const productId = this.props.match.params.id
 
-    this.setState({
-      orderId: rand,
-      cardNumber,
-      orderProcessStep: processStep
+    CarnetAPI.create({
+      mail: userId,
+      carnetId: productId
     })
-    console.log(rand)
-
-
-    //tutaj request na BE i jeśli feedback jest gitara przekierowanie na processStep "success"
+      .then(res => {
+        this.setState({
+          orderId: rand,
+          cardNumber,
+          orderProcessStep: processStep
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -143,7 +157,7 @@ class Order extends React.Component {
               onChange={this.subtotalInfo} 
               subtotal={subtotal} 
               price={price} 
-              imageId={this.props.match.params.id}
+              productId={this.props.match.params.id}
             />
           )}
           {orderProcessStep === 'customerInfo' && (

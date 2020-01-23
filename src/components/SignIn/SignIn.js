@@ -41,17 +41,20 @@ const SignIn = props => {
       return setLoading(false)
     }
 
-    // TODO: Uncomment when BE done
-    // const { data } = await UserAPI.login({ email, password })
+    UserAPI.login({
+      mail: email,
+      password
+    })
+      .then(res => {
+        if (res.data.mail) {
+          sessionStorage.setItem('userId', res.data.mail)
+          setLoading(false)
+          props.closeSignIn();
+          return history.push("/home");
+        }
+      })
+      .catch(err => alert('Invalid email or passsword'))
     setLoading(false)
-    // TODO: Uncomment when BE done
-    // if (data.userId) {
-    if (true) {
-      // sessionStorage.setItem('userId', data.userId)
-      props.closeSignIn();
-      return history.push("/home");
-    }
-    alert('Invalid email or passsword')
   };
 
   return (

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import ReactTable from 'react-table-6'
 
-import styles from './styles.module.css'
+import { ClassAPI } from '../../services/api'
 
-import { classes } from "../../services/data/classes.json";
+import styles from './styles.module.css'
 
 const columns = [
   {
@@ -60,11 +60,14 @@ class Classes extends Component {
   }
 
   componentDidMount() {
-    // Will be backend fetch
-    this.setState({
-      classes: classes,
-      loading: false
-    })
+    ClassAPI.all()
+      .then(res => {
+        return this.setState({
+          classes: res.data,
+          loading: false
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
